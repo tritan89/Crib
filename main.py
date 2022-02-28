@@ -32,7 +32,16 @@ class game:
     def cards_to_crib(self):
         card1, card2 = [int(x) for x in input("Player 1 Enter two numbers here: ").split()]
         card3, card4 = [int(x) for x in input("Player 2 Enter two numbers here: ").split()]
-        self.crib += self.hand_1.cards[card1]
+        hand1=[card1,card2]
+        hand2=[card3, card4 ]
+        self.crib.add(self.hand_1.get_list(hand1, 1))
+        self.crib.add(self.hand_2.get_list(hand2, 1))
+
+
+
+
+
+
 
 
 
@@ -76,9 +85,12 @@ def main():
     start = game()
     start.deal_hand()
     print(start.hand_1,"\n")
-    print(start.hand_2,"\n")
+    print(start.hand_2, "\n")
+
     start.cards_to_crib()
-    print(start.crib,"\n")
-    print(start.hand_1,"\n")
+    print(start.hand_1 ,"\n")
+    print(start.hand_2)
+
+
 
 main()
