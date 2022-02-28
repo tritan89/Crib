@@ -29,12 +29,44 @@ class game:
             print("player 2 has first crib")
             return 2
 
+    def cards_to_crib(self):
+        card1, card2 = [int(x) for x in input("Player 1 Enter two numbers here: ").split()]
+        card3, card4 = [int(x) for x in input("Player 2 Enter two numbers here: ").split()]
+        self.crib += self.hand_1.cards[card1]
+
 
 
 
     def deal_hand(self):
-        self.hand_1.deal(6)
-        self.hand_2.deal(6)
+        self.deck.shuffle(3)
+
+        self.hand_1 = self.deck.deal(6)
+        self.hand_2 = self.deck.deal(6)
+
+
+    new_ranks = {
+        "values": {
+            "Ace": 1,
+            "King": 10,
+            "Queen": 10,
+            "Jack": 10,
+            "10": 10,
+            "9": 9,
+            "8": 8,
+            "7": 7,
+            "6": 6,
+            "5": 5,
+            "4": 4,
+            "3": 3,
+            "2": 2
+        },
+        "suits": {
+            "Spades": 1,
+            "Hearts": 1,
+            "Clubs": 1,
+            "Diamonds": 1
+        }
+    }
 
 def print_card(card):
     print(card.value,"of", card.suit)
@@ -43,5 +75,10 @@ def print_card(card):
 def main():
     start = game()
     start.deal_hand()
-    start.first_turn()
-    start
+    print(start.hand_1,"\n")
+    print(start.hand_2,"\n")
+    start.cards_to_crib()
+    print(start.crib,"\n")
+    print(start.hand_1,"\n")
+
+main()
